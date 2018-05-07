@@ -88,34 +88,53 @@ So, we should be able to use the car class to answer our questions about who own
 ```python
 # let's first fix our first couple car instances and set them equal to the person instances that represent them:
 # make sure you have defined your setter instance methods for the car class!
-michael = Person("Michael Scott", "Manager")
+michael = Person("Michael Scott", "Regional Manager")
 sebring.owner = michael
 dwight = Person("Dwight Schrute", "Paper Salesperson")
 datsun.owner = dwight
-# let's add a couple more people
+# let's more people
 meredith = Person("Meredith Palmer", "Purchaser - Supplier Relations")
 ford_minivan = Car("Ford", "Aerostar Minivan", 1997, meredith)
 jim = Person("Jim Halpert", "Paper Salesperson")
 corolla = Car("Toyota", "Corolla", 2000, jim)
+stanley = Person("Stanley Hudson", "Paper Salesperson")
+chrylser300 = Car ("Chrysler", "300C", 2008, stanley)
 ```
 
 Alright, now let's try figuring out which employees drive toyotas, what the average age is for a Dunder Mifflin Employee's car, who owns the oldest car, and what the most popular car manufacturer is.
 
 
 ```python
-Person.has_oldest_car() # returns the person instance object that owns the oldest car
+Person.has_oldest_car() # class method that returns the person instance object that owns the oldest car
 ```
 
 
 ```python
-Person.drives_a("Toyota") # returns a list of person instance objects that own a Toyota
-Person.drives_a("Ford") # returns a list of person instance objects that own a Ford
+Person.drives_a("Toyota") 
+# class method that returns a list of person instance objects that own a Toyota
+# example: [jim, pam]
+Person.drives_a("Ford") 
+# class method that returns a list of person instance objects that own a Ford
+# example: [meredith]
 ```
 
 
 ```python
-Car.average_age() # returns the average age of all cars 
+michael.drives_same_make_as_me() 
+# instance method that returns a list of other dunder mifflin employees 
+# that drive the same make car as the instance object it was called on
+# example: [stanley]
+```
+
+
+```python
+Car.cars_driven_by("Paper Salesperson") 
+# class method that returns a list of car instance objects that are driven 
+# by people whose occupation is "Paper Salesperson"
+# example: [dwight, jim, stanley]
 ```
 
 ## Summary
 
+
+Great work! In this lab we successfully created a belongs to relationship between different Python classes. We were able to create a domain that more closely resembles a real world structure by translating the real world relationship between cars and people into code. We were then able to leverage this relationship in order to query information about our classes and their instances. Object relationships, although more straight forward than relationships between living people, can get quite complex and it is important to think critically about how to set them up. In a belongs to relationship, we learned it is the responsibilty of the *belongs to* class (the Car class) to know what it belongs to. 
