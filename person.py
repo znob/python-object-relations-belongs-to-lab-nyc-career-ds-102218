@@ -17,8 +17,27 @@ class Person:
 
     @classmethod
     def drives_a(cls, make):
-        cars = list(filter(lambda car.owner: car.make == make, Car.all()))
-        return cars
+        owners = [car.owner for car in Car.all() if car.make == make]
+        return owners
+
+    @classmethod
+    def has_oldest_car(cls):
+        cars = Car.all()
+        oldest = cars[0]
+        for car in cars:
+            if car.year < oldest.year:
+                oldest = car
+        return oldest.owner
+
+    def find_my_car(self):
+        cars = Car.all()
+        for car in cars:
+            if car.owner == self:
+                return car
+        return "You don't have a car yet"
 
     def drives_same_make_as_me(self):
-        pass
+        cars = Car.all()
+        my_car = self.find_my_car()
+        same_cars = [car.owner for car in cars if car.owner != self and car.make == my_car.make]
+        return same_cars

@@ -2,55 +2,61 @@ import unittest2 as unittest
 import sys
 sys.path.insert(0, '..')
 from person import Person
-from query import Query
+from car import Car
 
 class TestQueryPersonClassMethods(unittest.TestCase):
+    
+    global dwight
+    dwight = Person("Dwight Schrute", "Paper Salesperson")
+    global pam
+    pam = Person("Pam Beasley", "Secretary")
+    global michael
+    michael = Person("Michael Scott", "Regional Manager")
+    global stanley
+    stanley = Person("Stanley Hudson", "Paper Salesperson")
+    global jim
+    jim = Person("Jim Halpert", "Paper Salesperson")
+    global meredith
+    meredith = Person("Meredith Palmer", "Purchaser - Supplier Relations")
+    global ford_minivan
+    ford_minivan = Car("Ford", "Aerostar Minivan", 1997, meredith)
+    global corolla
+    corolla = Car("Toyota", "Corolla", 2000, jim)
+    global chrylser300
+    chrylser300 = Car ("Chrysler", "300C", 2008, stanley)
+    global chrysler
+    chrysler = Car("Chrysler", "Sebring Convertible", 2004, michael)
+    global toyota
+    toyota = Car("Toyota", "Yaris", 2007, pam)
+    global datsun
+    datsun = Car("Datsun", "280Z", 1978, dwight)
 
-    def test_person_class_init(self):
-        global per_1
-        global per_2
-        global per_3
-        global per_4
-        global per_5
-        per_1 = Person("Jeff", 31)
-        per_2 = Person("Molly", 24)
-        per_3 = Person("Kevin", 38)
-        per_4 = Person("Rachel", 27)
-        per_5 = Person("Devin", 25)
-        self.assertItemsEqual(Person._all, [per_1, per_2, per_3, per_4, per_5])
+    def test_person_property_methods(self):
+        self.assertEqual(dwight._name, "Dwight Schrute")
+        self.assertEqual(dwight.name, "Dwight Schrute")
+        self.assertEqual(dwight._occupation, "Paper Salesperson")
+        self.assertEqual(dwight.occupation, "Paper Salesperson")
 
-    def test_person_class_property_methods(self):
-        self.assertEqual(per_1._name, "Jeff")
-        self.assertEqual(per_1.name, "Jeff")
-        self.assertEqual(per_1._age, 31)
-        self.assertEqual(per_1.age, 31)
+    def test_car_property_methods(self):
+        self.assertEqual(datsun._make, "Datsun")
+        self.assertEqual(datsun.make, "Datsun")
+        self.assertEqual(datsun._model, "280Z")
+        self.assertEqual(datsun.model, "280Z")
+        self.assertEqual(datsun._year, 1978)
+        self.assertEqual(datsun.year, 1978)
+        self.assertEqual(datsun._owner, dwight)
+        self.assertEqual(datsun.owner, dwight)
+        self.assertItemsEqual(Car._all, [ford_minivan, corolla, chrysler, chrylser300, toyota, datsun])
+        self.assertItemsEqual(Car.all(), [ford_minivan, corolla, chrysler, chrylser300, toyota, datsun])
 
-    def test_query_count_class_method(self):
-        self.assertEqual(Query.count(Person), 5)
+    def test_cars_driven_by_class_method(self):
+        self.assertItemsEqual(Car.cars_driven_by("Secretary"), [toyota])
 
-    def test_query_find_by_name_class_method(self):
-        self.assertEqual(Query.find_by_name(Person, "Jeff"), per_1)
+    def test_drives_a_class_method(self):
+        self.assertItemsEqual(Person.drives_a("Toyota"), [jim, pam])
 
-    def test_query_name_starts_with_class_method(self):
-        self.assertItemsEqual(Query.name_starts_with(Person, 'K'), [per_3])
+    def test_has_oldest_car_class_method(self):
+        self.assertEqual(Person.has_oldest_car(), dwight)
 
-    def test_query_is_older_than_class_method(self):
-        self.assertItemsEqual(Query.is_older_than(Person, 30), [per_1, per_3])
-
-    def test_query_mean_age_class_method(self):
-        self.assertEqual(Query.mean_age(Person), 29)
-    #
-    def test_person_count_class_method(self):
-        self.assertEqual(Person.count(), 5)
-
-    def test_person_find_by_name_class_method(self):
-        self.assertEqual(Person.find_by_name("Jeff"), per_1)
-
-    def test_person_name_starts_with_class_method(self):
-        self.assertEqual(Person.name_starts_with('K'), [per_3])
-
-    def test_person_is_older_than_class_method(self):
-        self.assertItemsEqual(Person.is_older_than(30), [per_1, per_3])
-
-    def test_person_mean_age_class_method(self):
-        self.assertEqual(Person.mean_age(), 29)
+    def test_drives_same_make_as_me_instance_method(self):
+        self.assertItemsEqual(jim.drives_same_make_as_me(), [pam])
