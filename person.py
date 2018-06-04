@@ -16,11 +16,6 @@ class Person:
         return self._occupation
 
     @classmethod
-    def drives_a(cls, make):
-        owners = [car.owner for car in Car.all() if car.make == make]
-        return owners
-
-    @classmethod
     def has_oldest_car(cls):
         cars = Car.all()
         oldest = cars[0]
@@ -28,6 +23,11 @@ class Person:
             if car.year < oldest.year:
                 oldest = car
         return oldest.owner
+
+    @classmethod
+    def drives_a(cls, make):
+        owners = [car.owner for car in Car.all() if car.make == make]
+        return owners
 
     def find_my_car(self):
         cars = Car.all()
