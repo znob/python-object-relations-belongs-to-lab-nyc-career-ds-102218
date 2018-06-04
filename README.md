@@ -105,7 +105,7 @@ ford_minivan = Car("Ford", "Aerostar Minivan", 1997, meredith)
 jim = Person("Jim Halpert", "Paper Salesperson")
 corolla = Car("Toyota", "Corolla", 2000, jim)
 stanley = Person("Stanley Hudson", "Paper Salesperson")
-chrylser300 = Car ("Toyota", "Camry", 2008, stanley)
+camry = Car ("Toyota", "Camry", 2008, stanley)
 ```
 
 Alright, now let's try figuring out the employees drive toyotas, the average age of a Dunder Mifflin Employee's car, the person that owns the oldest car, and the most popular car manufacturer.
