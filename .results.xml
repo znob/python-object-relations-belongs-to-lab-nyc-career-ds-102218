@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="6" name="pytest" skips="0" tests="6" time="0.087"><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="39" name="test_car_property_methods" time="0.0009682178497314453"><failure message="AttributeError: &apos;Car&apos; object has no attribute &apos;make&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_car_property_methods&gt;
+
+    def test_car_property_methods(self):
+        self.assertEqual(datsun._make, &quot;Datsun&quot;)
+&gt;       self.assertEqual(datsun.make, &quot;Datsun&quot;)
+E       AttributeError: &apos;Car&apos; object has no attribute &apos;make&apos;
+
+test/index_test.py:42: AttributeError</failure></testcase><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="51" name="test_cars_driven_by_class_method" time="0.0006477832794189453"><failure message="AttributeError: type object &apos;Car&apos; has no attribute &apos;cars_driven_by&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_cars_driven_by_class_method&gt;
+
+    def test_cars_driven_by_class_method(self):
+&gt;       self.assertItemsEqual(Car.cars_driven_by(&quot;Secretary&quot;), [toyota])
+E       AttributeError: type object &apos;Car&apos; has no attribute &apos;cars_driven_by&apos;
+
+test/index_test.py:53: AttributeError</failure></testcase><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="54" name="test_drives_a_class_method" time="0.0006186962127685547"><failure message="AttributeError: type object &apos;Person&apos; has no attribute &apos;drives_a&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_drives_a_class_method&gt;
+
+    def test_drives_a_class_method(self):
+&gt;       self.assertItemsEqual(Person.drives_a(&quot;Toyota&quot;), [jim, pam])
+E       AttributeError: type object &apos;Person&apos; has no attribute &apos;drives_a&apos;
+
+test/index_test.py:56: AttributeError</failure></testcase><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="60" name="test_drives_same_make_as_me_instance_method" time="0.0005958080291748047"><failure message="AttributeError: &apos;Person&apos; object has no attribute &apos;drives_same_make_as_me&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_drives_same_make_as_me_instance_method&gt;
+
+    def test_drives_same_make_as_me_instance_method(self):
+&gt;       self.assertItemsEqual(jim.drives_same_make_as_me(), [pam])
+E       AttributeError: &apos;Person&apos; object has no attribute &apos;drives_same_make_as_me&apos;
+
+test/index_test.py:62: AttributeError</failure></testcase><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="57" name="test_has_oldest_car_class_method" time="0.0005927085876464844"><failure message="AttributeError: type object &apos;Person&apos; has no attribute &apos;has_oldest_car&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_has_oldest_car_class_method&gt;
+
+    def test_has_oldest_car_class_method(self):
+&gt;       self.assertEqual(Person.has_oldest_car(), dwight)
+E       AttributeError: type object &apos;Person&apos; has no attribute &apos;has_oldest_car&apos;
+
+test/index_test.py:59: AttributeError</failure></testcase><testcase classname="test.index_test.TestQueryPersonClassMethods" file="test/index_test.py" line="33" name="test_person_property_methods" time="0.0006186962127685547"><failure message="AttributeError: &apos;Person&apos; object has no attribute &apos;name&apos;">self = &lt;index_test.TestQueryPersonClassMethods testMethod=test_person_property_methods&gt;
+
+    def test_person_property_methods(self):
+        self.assertEqual(dwight._name, &quot;Dwight Schrute&quot;)
+&gt;       self.assertEqual(dwight.name, &quot;Dwight Schrute&quot;)
+E       AttributeError: &apos;Person&apos; object has no attribute &apos;name&apos;
+
+test/index_test.py:36: AttributeError</failure></testcase></testsuite>

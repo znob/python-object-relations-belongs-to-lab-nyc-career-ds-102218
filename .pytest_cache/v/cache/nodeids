@@ -1,0 +1,8 @@
+[
+  "test/index_test.py::TestQueryPersonClassMethods::test_car_property_methods",
+  "test/index_test.py::TestQueryPersonClassMethods::test_cars_driven_by_class_method",
+  "test/index_test.py::TestQueryPersonClassMethods::test_drives_a_class_method",
+  "test/index_test.py::TestQueryPersonClassMethods::test_drives_same_make_as_me_instance_method",
+  "test/index_test.py::TestQueryPersonClassMethods::test_has_oldest_car_class_method",
+  "test/index_test.py::TestQueryPersonClassMethods::test_person_property_methods"
+]
